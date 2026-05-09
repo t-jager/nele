@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alles Liebe zum Muttertag, Mama!</title>
+    <style>
+        :root {
+            --bg: #fff7f3;
+            --card: #ffffff;
+            --text: #33211d;
+            --muted: #7a5f58;
+            --accent: #e86f8a;
+            --accent-soft: #ffe1e8;
+            --gold: #f2b84b;
+            --shadow: 0 20px 50px rgba(112, 48, 66, 0.16);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, #ffe6ed 0, transparent 32rem),
+                radial-gradient(circle at bottom right, #fff0c9 0, transparent 28rem),
+                var(--bg);
+            min-height: 100vh;
+        }
+
+        .page {
+            width: min(1050px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 42px 0 56px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 56px 22px 38px;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent-soft);
+            color: #9a3850;
+            border: 1px solid rgba(232, 111, 138, 0.28);
+            border-radius: 999px;
+            padding: 10px 18px;
+            font-family: Arial, sans-serif;
+            font-size: 0.92rem;
+            letter-spacing: 0.02em;
+            margin-bottom: 22px;
+        }
+
+        h1 {
+            font-size: clamp(2.7rem, 8vw, 6.6rem);
+            line-height: 0.95;
+            margin: 0;
+            color: #7c2f45;
+            text-wrap: balance;
+        }
+
+        .subtitle {
+            max-width: 720px;
+            margin: 22px auto 0;
+            font-family: Arial, sans-serif;
+            font-size: clamp(1.05rem, 2vw, 1.28rem);
+            line-height: 1.7;
+            color: var(--muted);
+        }
+
+        .heart-row {
+            margin-top: 28px;
+            font-size: 1.9rem;
+            letter-spacing: 0.25rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.84);
+            border: 1px solid rgba(124, 47, 69, 0.11);
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(6px);
+        }
+
+        .section {
+            padding: clamp(24px, 5vw, 44px);
+            margin-top: 26px;
+        }
+
+        h2 {
+            margin: 0 0 22px;
+            color: #7c2f45;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            text-align: center;
+        }
+
+        .love-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+        .love-list li {
+            background: linear-gradient(135deg, #fff, #fff5f7);
+            border: 1px solid rgba(232, 111, 138, 0.22);
+            border-radius: 22px;
+            padding: 18px 18px 18px 54px;
+            min-height: 76px;
+            position: relative;
+            line-height: 1.45;
+            box-shadow: 0 10px 22px rgba(124, 47, 69, 0.07);
+        }
+
+        .love-list li::before {
+            content: "♥";
+            position: absolute;
+            left: 19px;
+            top: 18px;
+            color: var(--accent);
+            font-size: 1.35rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            margin-top: 18px;
+        }
+
+        .drawing {
+            background: #fff;
+            border-radius: 26px;
+            padding: 14px;
+            box-shadow: 0 16px 34px rgba(124, 47, 69, 0.12);
+            transform: rotate(-1.2deg);
+        }
+
+        .drawing:nth-child(2) {
+            transform: rotate(1.2deg);
+        }
+
+        .drawing img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+            background: #fff4d8;
+            border: 1px dashed rgba(124, 47, 69, 0.28);
+        }
+
+        .caption {
+            margin: 12px 4px 2px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: var(--muted);
+            font-size: 0.98rem;
+        }
+
+        .message {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: clamp(1.05rem, 2vw, 1.24rem);
+            line-height: 1.75;
+            color: var(--muted);
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .signature {
+            margin-top: 24px;
+            color: #7c2f45;
+            font-size: clamp(1.45rem, 3vw, 2.1rem);
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: var(--muted);
+            margin-top: 28px;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 760px) {
+
+            .love-list,
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <section class="hero">
+            <div class="badge">Für die beste Mama der Welt</div>
+            <h1>Alles Liebe zum Muttertag!</h1>
+            <p class="subtitle">
+                Liebe Mama, heute ist dein Tag. Wir möchten dir sagen, wie sehr wir dich lieben
+                und wie dankbar wir sind, dass du immer für uns da bist.
+            </p>
+            <div class="heart-row" aria-hidden="true">💐 💛 💗 💛 💐</div>
+        </section>
+
+        <section class="card section">
+            <h2>Was wir an dir toll finden</h2>
+            <ul class="love-list">
+                <li>Du hilfst uns unser Zimmer aufzuräumen.</li>
+                <li>Du kannst uns gut vorlesen und Lieder singen.</li>
+                <li>Du kannst uns gut kuscheln.</li>                
+                <li>Du passt immer gut auf uns auf.</li>
+                <li>Du bringst uns Fahrrad fahren und Laufrad fahren bei.</li>
+                <li>Du hörst uns immer zu, auch wenn wir viel zu erzählen haben.</li>
+                <li>Du machst unser Zuhause schön und schmückst mit uns den Tannebaum und den Garten.</li>
+                <li>Du passt gut auf die Umwelt auf und fährst ein Elektroauto.</li>
+            </ul>
+        </section>
+
+        <section class="card section">
+            <h2>Unsere Bilder für dich</h2>
+            <div class="gallery">
+                <figure class="drawing">
+                    <img src="bild-kind-1.jpg" alt="Gemaltes Bild von Kind 1" />
+                    <figcaption class="caption">Gemalt mit ganz viel Liebe</figcaption>
+                </figure>
+                <figure class="drawing">
+                    <img src="bild-kind-2.jpg" alt="Gemaltes Bild von Kind 2" />
+                    <figcaption class="caption">Ein Bild nur für dich</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="card section">
+            <p class="message">
+                Danke, dass du uns jeden Tag zeigst, was Liebe bedeutet. Du bist unser sicherer Ort,
+                unser Sonnenschein und unser größtes Glück.
+            </p>
+            <div class="signature">Wir lieben dich! ♥ Deine Nele und Lea</div>
+        </section>
+
+    </main>
+</body>
+
+</html>
