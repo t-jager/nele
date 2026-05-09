@@ -41,7 +41,6 @@
         .hero {
             text-align: center;
             padding: 56px 22px 38px;
-            position: relative;
         }
 
         .badge {
@@ -157,6 +156,7 @@
             display: block;
             background: #fff4d8;
             border: 1px dashed rgba(124, 47, 69, 0.28);
+            cursor: zoom-in;
         }
 
         .caption {
@@ -184,12 +184,53 @@
             text-align: center;
         }
 
-        footer {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            color: var(--muted);
-            margin-top: 28px;
-            font-size: 0.95rem;
+        .image-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 10, 12, 0.88);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            z-index: 9999;
+        }
+
+        .image-modal.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .image-modal img {
+            max-width: 95vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            border-radius: 18px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+            background: white;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 52px;
+            height: 52px;
+            border: none;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.92);
+            color: #7c2f45;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            transition: transform 0.15s ease;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.08);
         }
 
         @media (max-width: 760px) {
@@ -221,13 +262,13 @@
         <section class="card section">
             <h2>Was wir an dir toll finden</h2>
             <ul class="love-list">
-                <li>Du hilfst uns unser Zimmer aufzuräumen.</li>
+                <li>Du hilfst uns, unser Zimmer aufzuräumen.</li>
                 <li>Du kannst uns gut vorlesen und Lieder singen.</li>
-                <li>Du kannst uns gut kuscheln.</li>                
+                <li>Du kannst gut mit uns kuscheln.</li>
                 <li>Du passt immer gut auf uns auf.</li>
-                <li>Du bringst uns Fahrrad fahren und Laufrad fahren bei.</li>
+                <li>Du bringst uns Fahrradfahren und Laufradfahren bei.</li>
                 <li>Du hörst uns immer zu, auch wenn wir viel zu erzählen haben.</li>
-                <li>Du machst unser Zuhause schön und schmückst mit uns den Tannebaum und den Garten.</li>
+                <li>Du machst unser Zuhause schön und schmückst mit uns den Tannenbaum und den Garten.</li>
                 <li>Du passt gut auf die Umwelt auf und fährst ein Elektroauto.</li>
             </ul>
         </section>
@@ -236,12 +277,13 @@
             <h2>Unsere Bilder für dich</h2>
             <div class="gallery">
                 <figure class="drawing">
-                    <img src="bild-kind-1.jpg" alt="Gemaltes Bild von Kind 1" />
-                    <figcaption class="caption">Gemalt mit ganz viel Liebe</figcaption>
+                    <img src="bild-nele.jpg" alt="Gemaltes Bild von Nele" />
+                    <figcaption class="caption">Geschrieben und gemalt mit ganz viel Liebe</figcaption>
                 </figure>
+
                 <figure class="drawing">
-                    <img src="bild-kind-2.jpg" alt="Gemaltes Bild von Kind 2" />
-                    <figcaption class="caption">Ein Bild nur für dich</figcaption>
+                    <img src="bild-lea.jpg" alt="Gemaltes Bild von Lea" />
+                    <figcaption class="caption">Ganz viele Herzchen nur für dich</figcaption>
                 </figure>
             </div>
         </section>
@@ -253,8 +295,48 @@
             </p>
             <div class="signature">Wir lieben dich! ♥ Deine Nele und Lea</div>
         </section>
-
     </main>
+
+    <div id="image-modal" class="image-modal" aria-hidden="true">
+        <button class="close-btn" type="button" aria-label="Bild schließen">✕</button>
+        <img id="modal-image" src="" alt="" />
+    </div>
+
+    <script>
+        const modal = document.getElementById("image-modal");
+        const modalImage = document.getElementById("modal-image");
+        const closeBtn = document.querySelector(".close-btn");
+
+        document.querySelectorAll(".drawing img").forEach((img) => {
+            img.addEventListener("click", () => {
+                modalImage.src = img.src;
+                modalImage.alt = img.alt;
+                modal.classList.add("open");
+                modal.setAttribute("aria-hidden", "false");
+            });
+        });
+
+        function closeModal() {
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+            modalImage.src = "";
+            modalImage.alt = "";
+        }
+
+        closeBtn.addEventListener("click", closeModal);
+
+        modal.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 
 </html>
